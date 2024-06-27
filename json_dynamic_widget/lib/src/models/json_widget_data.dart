@@ -219,19 +219,11 @@ $errorValue
     required BuildContext context,
     JsonWidgetRegistry? registry,
   }) {
-    final data = copyWith(jsonWidgetRegistry: registry);
-    try {
-      return jsonWidgetBuilder().build(
-        childBuilder: childBuilder,
-        context: context,
-        data: data,
-      );
-    } catch (e) {
-      if (data.jsonWidgetRegistry.onBuildWidgetFailed != null) {
-        return data.jsonWidgetRegistry.onBuildWidgetFailed!(e, context);
-      }
-      rethrow;
-    }
+    return jsonWidgetBuilder().build(
+      childBuilder: childBuilder,
+      context: context,
+      data: copyWith(jsonWidgetRegistry: registry),
+    );
   }
 
   JsonWidgetData copyWith({
