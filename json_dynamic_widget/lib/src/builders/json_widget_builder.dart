@@ -105,6 +105,7 @@ abstract class JsonWidgetBuilder {
         return data.jsonWidgetRegistry.onBuildWidgetFailed!(
           context,
           exception,
+          data,
           stackTrace,
         );
       }
